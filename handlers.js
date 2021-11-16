@@ -1,5 +1,5 @@
 import { gifUrl } from "./commands/gif.js";
-import { addToTag, randomFromTag, tagCount } from "./commands/random.js";
+import { addToTag, randomFromTag, tagCount } from "./commands/cms.js";
 import { client } from "./bot.js";
 
 const commands = {
@@ -22,7 +22,7 @@ export async function msgHandler(msg) {
             commands[cmd](msg, args);
         } else {
             // todo: reply with !help info?
-            msg.reply(`Stop trying to make ${cmd} a thing, ${msg.author.username}`);
+            msg.reply(`Stop trying to make '${cmd}' a thing, ${msg.author.username}`);
             infoDump(msg);
         }
     }

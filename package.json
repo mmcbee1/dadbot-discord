@@ -1,0 +1,25 @@
+{
+  "name": "glowing-octo-train",
+  "version": "1.0.0",
+  "description": "",
+  "main": "bot.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mmcbee1/glowing-octo-train.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mmcbee1/glowing-octo-train/issues"
+  },
+  "homepage": "https://github.com/mmcbee1/glowing-octo-train#readme",
+  "dependencies": {
+    "discord.js": "^13.3.1",
+    "dotenv": "^10.0.0",
+    "node-fetch": "^3.1.0"
+  }
+}

@@ -12,7 +12,7 @@ export async function gifUrl(msg, args) {
 
     if (response.ok && json.data) {
         const imageReply = Array.isArray(json.data)
-            ? json.data[Math.floor(Math.random() * json.data.length-1)].url
+            ? json.data[Math.floor(Math.random() * json.data.length)].url
             : json.data.url;
         await msg.channel.send(imageReply);
     } else {

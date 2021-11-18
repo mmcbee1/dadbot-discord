@@ -1,18 +1,16 @@
 import { gifUrl } from "./commands/gif.js";
-import { addToTag, randomFromTag, tagCount } from "./commands/cms.js";
-import { client } from "./bot.js";
+import { addToTag, deleteMessage, getMessage, randomFromTag, tagCount } from "./commands/cms.js";
 
 const commands = {
     gif: gifUrl,
     random: randomFromTag,
     count: tagCount,
-    addto: addToTag
+    addto: addToTag,
+    axe: deleteMessage,
+    checkid: getMessage,
 };
 
 export async function msgHandler(msg) {
-    if (client.user.id === msg.author.id) return;
-    if (process.env.DEBUG_ONLY && msg.channelId !== process.env.TEST_CHANNEL_ID) return;
-
     let args = msg.content.split(' ');
     let cmd = args.shift();
 
@@ -22,7 +20,7 @@ export async function msgHandler(msg) {
             commands[cmd](msg, args);
         } else {
             // todo: reply with !help info?
-            msg.reply(`Stop trying to make '${cmd}' a thing, ${msg.author.username}`);
+            // msg.reply(`Stop trying to make '${cmd}' a thing, ${msg.author.username}`);
             infoDump(msg);
         }
     }

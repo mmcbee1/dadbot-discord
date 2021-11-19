@@ -19,8 +19,11 @@ export async function msgHandler(msg) {
         if (Object.keys(commands).includes(cmd)) {
             commands[cmd](msg, args);
         } else {
-            // todo: reply with !help info?
-            // msg.reply(`Stop trying to make '${cmd}' a thing, ${msg.author.username}`);
+            const gifSearchArgs = ['help', 'no', 'invalid', 'sorry'];
+            gifUrl(msg, gifSearchArgs, true).then(url => {
+                msg.channel.send(`Sorry! !${cmd} isn't a thing.`);
+                msg.channel.send(url);
+            });
             infoDump(msg);
         }
     }

@@ -1,10 +1,9 @@
 import { Client, Intents } from 'discord.js';
 import { msgHandler } from "./handlers.js";
 
-// local use of .env for config
-if (parseInt(process.env.LOCAL, 10)) {
-  require('dotenv').config();
-}
+// un-comment for local dev
+// import dotenv from "dotenv";
+// dotenv.config();
 
 const client = new Client({
   partials: ['CHANNEL'],
@@ -29,4 +28,7 @@ client.on('messageCreate', (msg) => {
 // client.on('messageReactionAdd', logIt);
 // client.on('interactionCreate', logIt); // registered slash commands
 
-client.login(process.env.BOT_TOKEN).then().catch(e => console.error(e));
+client.login(process.env.BOT_TOKEN).then().catch(e => {
+  console.warn(process.env.BOT_TOKEN)
+  console.error(e)
+});

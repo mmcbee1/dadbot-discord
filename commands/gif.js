@@ -1,6 +1,6 @@
 import fetch from "node-fetch";
 
-export async function gifUrl(msg, args) {
+export async function gifUrl(msg, args, urlOnly = true) {
     const params = `api_key=${process.env.GYPHY_KEY}&limit=10&rating=pg-13&lang=en`
     const query = args.length ? args.join(' ') : '';
     let url = query
@@ -14,7 +14,11 @@ export async function gifUrl(msg, args) {
         const imageReply = Array.isArray(json.data)
             ? json.data[Math.floor(Math.random() * json.data.length)].url
             : json.data.url;
-        await msg.channel.send(imageReply);
+        if (urlOnly) {
+            return await imageReply;
+        } else {
+            await msg.channel.send(imageReply);
+        }
     } else {
         console.warn(json);
     }

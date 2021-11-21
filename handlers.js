@@ -1,5 +1,6 @@
 import { gifUrl } from "./commands/gif.js";
-import { addToTag, deleteMessage, getMessage, randomFromTag, tagCount } from "./commands/cms.js";
+import { randomFromTag, tagCount } from "./commands/cms.js";
+import { addToTag, deleteMessage, getMessage } from "./commands/admin.js"
 
 const commands = {
     gif: gifUrl,
@@ -19,11 +20,6 @@ export async function msgHandler(msg) {
         if (Object.keys(commands).includes(cmd)) {
             commands[cmd](msg, args);
         } else {
-            const gifSearchArgs = ['help', 'no', 'invalid', 'sorry'];
-            gifUrl(msg, gifSearchArgs, true).then(url => {
-                msg.channel.send(`Sorry! !${cmd} isn't a thing.`);
-                msg.channel.send(url);
-            });
             infoDump(msg);
         }
     }

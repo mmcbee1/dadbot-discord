@@ -28,7 +28,4 @@ client.on('messageCreate', (msg) => {
 // client.on('messageReactionAdd', logIt);
 // client.on('interactionCreate', logIt); // registered slash commands
 
-client.login(process.env.BOT_TOKEN).then().catch(e => {
-  console.warn(process.env.BOT_TOKEN)
-  console.error(e)
-});
+client.login(process.env.BOT_TOKEN).then().catch(e => console.error(e));

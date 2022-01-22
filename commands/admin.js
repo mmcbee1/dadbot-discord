@@ -5,18 +5,12 @@ export async function addToTag(msg, args) {
     const okUsers = [
         process.env.ME_UID,
         process.env.RIGGS_UID,
-        process.env.DONCHAMP_UID,
+        process.env.DJMIGGY_UID,
     ];
     if (!(okServers.includes(msg.guildId) || okUsers.includes(msg.author.id))) return;
 
     const category = args.length ? args[0] : '';
     const message = args.length ? args.splice(1).join(' ') : '';
-
-    // until permissions system is added in the api, keep dadjokes safe for riggs
-    if (msg.author.id === process.env.DONCHAMP_UID && category === 'dadjoke') {
-        await msg.reply('You must be an actual dad to add dadjokes');
-        return;
-    }
 
     if (!category || !message) {
         await msg.reply('Add what? Ex: !addto <tag> <content>');
